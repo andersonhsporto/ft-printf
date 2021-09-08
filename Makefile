@@ -40,5 +40,5 @@ push:
 	git push
 
 clang:
-	$(CC) $(CFLAGS) main.c ./libft/libft.a
+	$(CC) $(CFLAGS) main.c utils.c ./libft/libft.a
 	./a.out
