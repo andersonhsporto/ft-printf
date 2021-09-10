@@ -6,7 +6,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 FOLDER = ./src/
 
-SRC = $(FOLDER)main.c $(FOLDER)utils.c
+SRC = $(FOLDER)printf.c $(FOLDER)utils.c
 
 OBJ := $(SRC:%.c=%.o)
 
@@ -21,8 +21,9 @@ libft:
 	make all -C ./libft
 
 clean:
-	rm -rf *.o
+	rm -rf $(OBJ)
 	rm -rf ./a.out
+
 
 fclean:	clean
 	rm -rf $(NAME)
@@ -36,5 +37,13 @@ push:
 	git push
 
 clang:
-	$(CC) $(CFLAGS) main.c utils.c ./libft/libft.a
+	$(CC) $(CFLAGS) main.c libftprintf.a
+	./a.out
+
+valgrind:
+	$(CC) $(CFLAGS) -g main.c libftprintf.a
+	valgrind --track-origins=yes  ./a.out
+
+sanitize:
+	$(CC) $(CFLAGS) -g -fsanitize=address main.c libftprintf.a
 	./a.out
