@@ -1,8 +1,8 @@
 #include "../ft_printf.h"
 
-int	putchar_fd(char c, int fd)
+int	putchar_fd(char c)
 {
-	ft_putchar_fd(c, fd);
+	write(1, &c, 1);
 	return (1);
 }
 
@@ -110,7 +110,6 @@ int	hex_str(unsigned int n, char c)
 	}
 	i = ft_printhex(str, c);
 	free(str);
-	str = NULL;
 	return (i);
 }
 
@@ -118,7 +117,7 @@ int	hex_void(unsigned int n)
 {
 	int i = 0;
 
-	i += putstring_fd("0x", 1);	
+	i += putstring_fd("0x", 1);
 	i += hex_str(n, 'x');
 	return(i);
 }
