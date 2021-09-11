@@ -49,25 +49,6 @@ int	unsigned_fd(unsigned int n)
 	return (j);
 }
 
-static int	ft_printhex(char *str, char c)
-{
-	int	i;
-
-	i = ft_strlen(str);
-	while (i >= 0)
-	{
-		if (c == 'X')
-		{
-			ft_putchar_fd(ft_toupper(str[i]), 1);
-		}
-		if (c == 'x')
-		{
-			ft_putchar_fd(str[i], 1);
-		}
-		i--;
-	}
-	return (ft_strlen(str));
-}
 
 static int	ft_decimal(unsigned int n)
 {
@@ -86,27 +67,37 @@ static int	ft_decimal(unsigned int n)
 	return (count);
 }
 
+int	ft_printhex(char *str, char c)
+{
+	int i;
+
+	if (c == 'X')
+	{
+		while (str[i] != '\0')
+		{
+			str[i] = ft_toupper(str[i]);
+			i++;
+		}
+	}
+	i = putstring_fd(str, 1);
+	return (i);
+}
+
 int	hex_str(unsigned int n, char c)
 {
-	int				i;
-	int				remain;
 	char			*str;
+	char			*base;
+	unsigned int	i;
 
-	i = 0;
-	remain = 0;
-	str = malloc(ft_decimal(n) + 1);
-	if (str == 0)
+	i = ft_decimal(n);
+	base = "0123456789abcdef";
+	str = malloc(i);
+	if (!str)
 		return (0);
-	str[ft_decimal(n)] = '\0';
-	while (n > 0)
+	while (i)
 	{
-		remain = n % 16;
-		if (remain < 10)
-			str[i] = '0' + remain;
-		else
-			str[i] = 'a' + (remain - 10);
+		str[--i] = base[n % 16];
 		n = n / 16;
-		i++;
 	}
 	i = ft_printhex(str, c);
 	free(str);
