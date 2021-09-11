@@ -10,12 +10,12 @@ SRC = $(FOLDER)printf.c $(FOLDER)utils.c
 
 OBJ := $(SRC:%.c=%.o)
 
-all:	$(NAME)
-
 $(NAME): $(OBJ) $(libft)
 	make all -C ./libft
 	cp ./libft/libft.a libftprintf.a
 	ar -rcs $(NAME) $(OBJ)
+
+all:	$(NAME)
 
 libft:
 	make all -C ./libft
@@ -37,13 +37,13 @@ push:
 	git push
 
 clang:
-	$(CC) $(CFLAGS) main.c libftprintf.a
+	$(CC) $(CFLAGS) main.c $(SRC) ./libft/libft.a
 	./a.out
 
 valgrind:
-	$(CC) $(CFLAGS) -g main.c libftprintf.a
+	$(CC) $(CFLAGS) -g $(SRC) ./libft/libft.a
 	valgrind --track-origins=yes  ./a.out
 
 sanitize:
-	$(CC) $(CFLAGS) -g -fsanitize=address main.c libftprintf.a
+	$(CC) $(CFLAGS) -g -fsanitize=address $(SRC) ./libft/libft.a
 	./a.out
