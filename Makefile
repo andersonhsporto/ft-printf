@@ -6,7 +6,7 @@ CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE)
 
 SRC = ./src/
 
-INCLUDE = ./include
+INCLUDE = ./includes
 
 MAIN = $(SRC)printf.c $(SRC)print_csdui.c $(SRC)print_void.c $(SRC)print_hexadecimal.c
 

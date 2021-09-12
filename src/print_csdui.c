@@ -6,11 +6,11 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 10:57:57 by anhigo-s          #+#    #+#             */
-/*   Updated: 2021/09/12 13:13:19 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2021/09/12 18:43:57 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <ft_printf.h>
 
 int	putchar_fd(char c)
 {
