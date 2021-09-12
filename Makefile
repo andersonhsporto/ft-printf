@@ -6,7 +6,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 FOLDER = ./src/
 
-SRC = $(FOLDER)printf.c $(FOLDER)utils.c $(FOLDER)print_void.c $(FOLDER)print_hexadecimal.c
+SRC = $(FOLDER)printf.c $(FOLDER)print_csdui.c $(FOLDER)print_void.c $(FOLDER)print_hexadecimal.c
 
 OBJ := $(SRC:%.c=%.o)
 
@@ -22,8 +22,8 @@ libft:
 
 clean:
 	rm -rf $(OBJ)
-	make clean -C ./libft
 	rm -rf ./a.out
+	make clean -C ./libft
 
 
 fclean:	clean
