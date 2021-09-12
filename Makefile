@@ -2,13 +2,15 @@ NAME = libftprintf.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE)
 
-FOLDER = ./src/
+SRC = ./src/
 
-SRC = $(FOLDER)printf.c $(FOLDER)print_csdui.c $(FOLDER)print_void.c $(FOLDER)print_hexadecimal.c
+INCLUDE = ./include
 
-OBJ := $(SRC:%.c=%.o)
+MAIN = $(SRC)printf.c $(SRC)print_csdui.c $(SRC)print_void.c $(SRC)print_hexadecimal.c
+
+OBJ := $(MAIN:%.c=%.o)
 
 $(NAME): $(OBJ)
 	make all -C ./libft
@@ -39,13 +41,13 @@ push:
 	git push
 
 clang:
-	$(CC) $(CFLAGS) main.c $(SRC) ./libft/libft.a
+	$(CC) $(CFLAGS) $(INCLUDE) main.c $(SRC) ./libft/libft.a
 	./a.out
 
 valgrind:
-	$(CC) $(CFLAGS) -g main.c $(SRC) ./libft/libft.a
+	$(CC) $(CFLAGS) $(INCLUDE) -g main.c $(SRC) ./libft/libft.a
 	valgrind --track-origins=yes  ./a.out
 
 sanitize:
-	$(CC) $(CFLAGS) -g -fsanitize=address main.c $(SRC) ./libft/libft.a
+	$(CC) $(CFLAGS) $(INCLUDE) -g -fsanitize=address main.c $(SRC) ./libft/libft.a
 	./a.out
