@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/11 21:30:50 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/09/11 21:30:51 by anhigo-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_printf.h"
 
 int	putchar_fd(char c)
@@ -49,69 +61,4 @@ int	unsigned_fd(unsigned int n)
 		j++;
 	}
 	return (j);
-}
-
-
-static int	ft_decimal(size_t n)
-{
-	int	count;
-
-	count = 0;
-	if (n == 0)
-	{
-		return (1);
-	}
-	while (n != 0)
-	{
-		n = n / 16;
-		++count;
-	}
-	return (count);
-}
-
-int	ft_printhex(char *str, char c)
-{
-	int i;
-
-	i = 0;
-	if (c == 'X')
-	{
-		while (str[i] != '\0')
-		{
-			str[i] = ft_toupper(str[i]);
-			i++;
-		}
-	}
-	i = putstring_fd(str, 1);
-	return (i);
-}
-
-int	hex_str(size_t n, char c)
-{
-	char			*str;
-	char			*digits;
-	unsigned int	i;
-
-	i = ft_decimal(n);
-	digits = "0123456789abcdef";
-	str = malloc(i * sizeof(char));
-	if (!str)
-		return (0);
-	while (i)
-	{
-		str[--i] = digits[n % 16];
-		n = n / 16;
-	}
-	i = ft_printhex(str, c);
-	free(str);
-	return (i);
-}
-
-int	hex_void(size_t n)
-{
-	int i = 0;
-
-	i += putstring_fd("0x", 1);
-	i += hex_str(n, 'x');
-	return(i);
 }
