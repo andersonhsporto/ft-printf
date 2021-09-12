@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/11 21:30:50 by anhigo-s          #+#    #+#             */
-/*   Updated: 2021/09/11 21:30:51 by anhigo-s         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../ft_printf.h"
 
 int	putchar_fd(char c)
@@ -20,13 +8,19 @@ int	putchar_fd(char c)
 
 int	putstring_fd(char *s, int fd)
 {
+	int	i;
 	if (s == NULL)
 	{
 		write(1, "(null)", 6);
 		return (6);
 	}
-	ft_putstr_fd(s, fd);
-	return (ft_strlen(s));
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], fd);
+		i++;
+	}
+	return (i);
 }
 
 int	putnbr_fd(int n)
