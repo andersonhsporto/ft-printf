@@ -1,84 +1,59 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   print_void.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/11 21:28:47 by anhigo-s          #+#    #+#             */
-/*   Updated: 2021/09/11 23:33:38 by anhigo-s         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../ft_printf.h"
 
-static int	hex_len(size_t n)
+int	putchar_fd(char c)
 {
-	int	count;
-
-	count = 0;
-	if (n == 0)
-	{
-		return (1);
-	}
-	while (n != 0)
-	{
-		n = n / 16;
-		++count;
-	}
-	return (count);
+	write(1, &c, 1);
+	return (1);
 }
 
-static int	print_hex(char *str, char c)
+int	putstring_fd(char *s, int fd)
 {
 	int	i;
 
-	i = 0;
-	if (c == 'X')
+	if (s == NULL)
 	{
-		while (str[i] != '\0')
-		{
-			str[i] = ft_toupper(str[i]);
-			i++;
-		}
+		write(1, "(null)", 6);
+		return (6);
 	}
-	i = putstring_fd(str, 1);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], fd);
+		i++;
+	}
 	return (i);
 }
 
-int	void_str(size_t n, char c)
+int	putnbr_fd(int n)
 {
-	char			*str;
-	char			*digits;
+	int		i;
+	char	*string;
+
+	string = ft_itoa(n);
+	i = putstring_fd(string, 1);
+	free(string);
+	string = NULL;
+	return (i);
+}
+
+int	unsigned_fd(unsigned int n)
+{
 	unsigned int	i;
+	int				j;
 
-	i = hex_len(n);
-	digits = "0123456789abcdef";
-	str = ft_calloc((i + 1), sizeof(char));
-	if (!str)
-		return (0);
-	while (i)
+	i = n;
+	j = 0;
+	if (i > 9)
 	{
-		str[--i] = digits[n % 16];
-		n = n / 16;
+		unsigned_fd(i / 10);
 	}
-	i = print_hex(str, c);
-	free(str);
-	str = NULL;
-	return (i);
-}
-
-int	hex_void(size_t n)
-{
-	int	i;
-
-	i = 0;
-	if (n == 1)
+	ft_putchar_fd(i % 10 + '0', 1);
+	if (n == 0)
+		return (1);
+	while (n)
 	{
-		i += putstring_fd("0x1", 1);
-		return (i);
+		n /= 10;
+		j++;
 	}
-	i += putstring_fd("0x", 1);
-	i += void_str(n, 'x');
-	return (i);
+	return (j);
 }
