@@ -6,7 +6,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 FOLDER = ./src/
 
-SRC = $(FOLDER)printf.c $(FOLDER)utils.c
+SRC = $(FOLDER)printf.c $(FOLDER)utils.c $(FOLDER)print_void.c $(FOLDER)print_hexadecimal.c
 
 OBJ := $(SRC:%.c=%.o)
 
@@ -33,6 +33,7 @@ fclean:	clean
 re:	fclean all
 
 push:
+	make fclean
 	git add .
 	git commit -m "update"
 	git push
