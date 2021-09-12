@@ -10,7 +10,7 @@ SRC = $(FOLDER)printf.c $(FOLDER)utils.c
 
 OBJ := $(SRC:%.c=%.o)
 
-$(NAME): $(OBJ) $(libft)
+$(NAME): $(OBJ)
 	make all -C ./libft
 	cp ./libft/libft.a libftprintf.a
 	ar -rcs $(NAME) $(OBJ)
@@ -22,6 +22,7 @@ libft:
 
 clean:
 	rm -rf $(OBJ)
+	make clean -C ./libft
 	rm -rf ./a.out
 
 
