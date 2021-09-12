@@ -38,7 +38,7 @@ int	ft_printf(const char *format, ...)
 				}
 				else if (*(format + 1) == 'x' || *(format + 1) == 'X')
 				{
-					j += hex_str(va_arg(argo, unsigned int), *(format + 1));
+					j += hex_str(va_arg(argo, size_t), *(format + 1));
 				}
 				format++;
 		}
