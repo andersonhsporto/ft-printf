@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 21:28:47 by anhigo-s          #+#    #+#             */
-/*   Updated: 2021/09/12 13:40:11 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2021/09/12 15:12:26 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,6 @@ int	hex_void(size_t n)
 	int	i;
 
 	i = 0;
-	if (n == 1)
-	{
-		i += putstring_fd("0x1");
-		return (i);
-	}
 	i += putstring_fd("0x");
 	i += void_str(n, 'x');
 	return (i);
