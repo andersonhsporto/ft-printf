@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_hexadecimal.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/11 23:57:19 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/09/11 23:58:06 by anhigo-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_printf.h"
 
 static int	hex_len(unsigned int n)
@@ -36,9 +48,9 @@ static int	print_hex(char *str, char c)
 
 static int	hex_c(unsigned int n, char c)
 {
-	char			*str;
-	char			*digits;
-	int	i;
+	char	*str;
+	char	*digits;
+	int		i;
 
 	i = hex_len(n);
 	digits = "0123456789abcdef";
@@ -54,7 +66,6 @@ static int	hex_c(unsigned int n, char c)
 	free(str);
 	return (i);
 }
-
 
 int	hex_str(unsigned int n, char c)
 {
