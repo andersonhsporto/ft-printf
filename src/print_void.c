@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_void.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/11 21:28:47 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/09/11 23:33:38 by anhigo-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_printf.h"
 
-static int	hex_len(unsigned int n)
+static int	hex_len(size_t n)
 {
 	int	count;
 
@@ -34,11 +46,11 @@ static int	print_hex(char *str, char c)
 	return (i);
 }
 
-static int	hex_c(unsigned int n, char c)
+int	void_str(size_t n, char c)
 {
 	char			*str;
 	char			*digits;
-	int	i;
+	unsigned int	i;
 
 	i = hex_len(n);
 	digits = "0123456789abcdef";
@@ -52,19 +64,21 @@ static int	hex_c(unsigned int n, char c)
 	}
 	i = print_hex(str, c);
 	free(str);
+	str = NULL;
 	return (i);
 }
 
-
-int	hex_str(unsigned int n, char c)
+int	hex_void(size_t n)
 {
 	int	i;
 
 	i = 0;
-	if (n == 0)
+	if (n == 1)
 	{
-		i += putchar_fd('0');
+		i += putstring_fd("0x1", 1);
 		return (i);
 	}
-	return (hex_c(n, c));
+	i += putstring_fd("0x", 1);
+	i += void_str(n, 'x');
+	return (i);
 }
