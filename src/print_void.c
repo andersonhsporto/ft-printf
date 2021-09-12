@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 21:28:47 by anhigo-s          #+#    #+#             */
-/*   Updated: 2021/09/12 15:12:26 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2021/09/12 15:17:55 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	print_hex(char *str, char c)
 	return (i);
 }
 
-int	void_str(size_t n, char c)
+static int	void_str(size_t n, char c)
 {
 	char			*str;
 	char			*digits;
