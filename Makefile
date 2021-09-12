@@ -2,13 +2,14 @@ NAME = libftprintf.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE)
+INCLUDE = -I ./includes
+
+CFLAGS = -Wall -Werror -Wextra $(INCLUDE)
 
 SRC = ./src/
 
-INCLUDE = ./includes
-
-MAIN = $(SRC)printf.c $(SRC)print_csdui.c $(SRC)print_void.c $(SRC)print_hexadecimal.c
+MAIN =	$(SRC)ft_printf.c $(SRC)print_csdui.c $(SRC)print_void.c \
+		$(SRC)print_hexadecimal.c
 
 OBJ := $(MAIN:%.c=%.o)
 
@@ -20,7 +21,7 @@ $(NAME): $(OBJ)
 all:	$(NAME)
 
 libft:
-	make all -C ./libft
+	make -C ./libft
 
 clean:
 	rm -rf $(OBJ)
