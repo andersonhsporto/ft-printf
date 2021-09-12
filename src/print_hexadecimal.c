@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 23:57:19 by anhigo-s          #+#    #+#             */
-/*   Updated: 2021/09/11 23:58:06 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2021/09/12 12:58:04 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	print_hex(char *str, char c)
 			i++;
 		}
 	}
-	i = putstring_fd(str, 1);
+	i = putstring_fd(str);
 	return (i);
 }
 
@@ -59,11 +59,13 @@ static int	hex_c(unsigned int n, char c)
 		return (0);
 	while (i)
 	{
-		str[--i] = digits[n % 16];
+		i--;
+		str[i] = digits[n % 16];
 		n = n / 16;
 	}
 	i = print_hex(str, c);
 	free(str);
+	str = NULL;
 	return (i);
 }
 
