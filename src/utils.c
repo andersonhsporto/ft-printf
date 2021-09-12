@@ -41,6 +41,8 @@ int	unsigned_fd(unsigned int n)
 		unsigned_fd(i / 10);
 	}
 	ft_putchar_fd(i % 10 + '0', 1);
+	if (n == 0)
+		return (1);
 	while (n)
 	{
 		n /= 10;
@@ -50,7 +52,7 @@ int	unsigned_fd(unsigned int n)
 }
 
 
-static int	ft_decimal(unsigned int n)
+static int	ft_decimal(size_t n)
 {
 	int	count;
 
@@ -61,7 +63,7 @@ static int	ft_decimal(unsigned int n)
 	}
 	while (n != 0)
 	{
-		n = n / 10;
+		n = n / 16;
 		++count;
 	}
 	return (count);
@@ -71,6 +73,7 @@ int	ft_printhex(char *str, char c)
 {
 	int i;
 
+	i = 0;
 	if (c == 'X')
 	{
 		while (str[i] != '\0')
@@ -83,15 +86,15 @@ int	ft_printhex(char *str, char c)
 	return (i);
 }
 
-int	hex_str(unsigned int n, char c)
+int	hex_str(size_t n, char c)
 {
 	char			*str;
-	char			*base;
+	char			*digits;
 	unsigned int	i;
 
 	i = ft_decimal(n);
-	base = "0123456789abcdef";
-	str = malloc(i);
+	digits = "0123456789abcdef";
+	str = malloc(i * sizeof(char));
 	if (!str)
 		return (0);
 	while (i)
@@ -104,7 +107,7 @@ int	hex_str(unsigned int n, char c)
 	return (i);
 }
 
-int	hex_void(unsigned int n)
+int	hex_void(size_t n)
 {
 	int i = 0;
 
@@ -112,4 +115,3 @@ int	hex_void(unsigned int n)
 	i += hex_str(n, 'x');
 	return(i);
 }
-
