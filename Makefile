@@ -41,13 +41,13 @@ push:
 	git push
 
 clang:
-	$(CC) $(CFLAGS) main.c $(SRC) ./libft/libft.a
+	$(CC) $(CFLAGS) main.c $(MAIN) ./libft/libft.a
 	./a.out
 
 valgrind:
-	$(CC) $(CFLAGS) -g main.c $(SRC) ./libft/libft.a
+	$(CC) $(CFLAGS) -g main.c $(MAIN) ./libft/libft.a
 	valgrind --track-origins=yes  ./a.out
 
 sanitize:
-	$(CC) $(CFLAGS) -g -fsanitize=address main.c $(SRC) ./libft/libft.a
+	$(CC) $(CFLAGS) -g -fsanitize=address main.c $(MAIN) ./libft/libft.a
 	./a.out

@@ -6,11 +6,11 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 21:28:47 by anhigo-s          #+#    #+#             */
-/*   Updated: 2021/09/12 13:05:08 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2021/09/12 13:40:11 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static int	hex_len(size_t n)
 {
