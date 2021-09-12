@@ -99,7 +99,7 @@ int	hex_str(size_t n, char c)
 		return (0);
 	while (i)
 	{
-		str[--i] = base[n % 16];
+		str[--i] = digits[n % 16];
 		n = n / 16;
 	}
 	i = ft_printhex(str, c);
