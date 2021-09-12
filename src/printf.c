@@ -26,7 +26,7 @@ int	ft_printf(const char *format, ...)
 				}
 				else if (*(format + 1) == 'p')
 				{
-					j += hex_void(va_arg(argo, unsigned int));
+					j += hex_void(va_arg(argo, size_t));
 				}
 				else if (*(format + 1) == 'd' || *(format + 1) == 'i')
 				{
