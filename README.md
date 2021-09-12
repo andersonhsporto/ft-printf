@@ -1,4 +1,4 @@
-# libftprintf
+# Libftprintf
 ---
 ### Library that contains ft_printf, function that mimic the real printf.
 
