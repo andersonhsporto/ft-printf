@@ -1,46 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anhigo-s <anhigo-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/12 12:44:41 by anhigo-s          #+#    #+#             */
+/*   Updated: 2021/09/12 12:57:09 by anhigo-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_printf.h"
+
+static int	check_arg(char p, va_list args)
+{
+	int	i;
+
+	i = 0;
+	if (p == '%')
+		i = putchar_fd('%');
+	else if (p == 'c')
+		i = putchar_fd(va_arg(args, int));
+	else if (p == 's')
+		i = putstring_fd(va_arg(args, char *));
+	else if (p == 'p')
+		i = hex_void(va_arg(args, size_t));
+	else if (p == 'd' || p == 'i')
+		i = putnbr_fd(va_arg(args, int));
+	else if (p == 'u')
+		i = unsigned_fd(va_arg(args, unsigned int));
+	else if (p == 'x' || p == 'X')
+		i = hex_str(va_arg(args, size_t), p);
+	return (i);
+}
 
 int	ft_printf(const char *format, ...)
 {
-	int	j = 0;
 	va_list	argo;
+	int		j;
 
 	if (!format)
 		return (0);
 	va_start(argo, format);
+	j = 0;
 	while (*format)
 	{
 		if (*format == '%' && ft_strchr("cspduixX%", *(format + 1)))
 		{
-				if (*(format + 1) == '%')
-				{
-					j += putchar_fd('%');
-				}
-				else if (*(format + 1) == 'c')
-				{
-					j += putchar_fd(va_arg(argo, int));
-				}
-				else if (*(format + 1) == 's')
-				{
-					j += putstring_fd(va_arg(argo, char *), 1);
-				}
-				else if (*(format + 1) == 'p')
-				{
-					j += hex_void(va_arg(argo, size_t));
-				}
-				else if (*(format + 1) == 'd' || *(format + 1) == 'i')
-				{
-					j += putnbr_fd(va_arg(argo, int));
-				}
-				else if (*(format + 1) == 'u')
-				{
-					j += unsigned_fd(va_arg(argo, unsigned int));
-				}
-				else if (*(format + 1) == 'x' || *(format + 1) == 'X')
-				{
-					j += hex_str(va_arg(argo, size_t), *(format + 1));
-				}
-				format++;
+			j += check_arg(*(format + 1), argo);
+			format++;
 		}
 		else
 		{
@@ -49,5 +57,5 @@ int	ft_printf(const char *format, ...)
 		format++;
 	}
 	va_end(argo);
-	return(j);
+	return (j);
 }
