@@ -6,7 +6,7 @@
 /*   By: anhigo-s <anhigo-s@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 21:09:42 by anhigo-s          #+#    #+#             */
-/*   Updated: 2021/10/08 00:07:24 by anhigo-s         ###   ########.fr       */
+/*   Updated: 2021/10/08 00:30:26 by anhigo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	unsigned_fd(unsigned int n)
 {
+	static int		j;
 	unsigned int	i;
-	static int	j;
 
 	i = n;
 	if (!j)

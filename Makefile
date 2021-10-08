@@ -4,7 +4,7 @@ CC = gcc
 
 INCLUDE = -I ./includes
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDE)
+CFLAGS = -Wall -Werror -Wextra $(INCLUDE) 
 
 SRC = ./src/
 
