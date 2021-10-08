@@ -15,7 +15,7 @@
 int	unsigned_fd(unsigned int n)
 {
 	unsigned int	i;
-	static int		j;
+	static int	j;
 
 	i = n;
 	if (!j)
