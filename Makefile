@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-CC = gcc
+CC = clang
 
 INCLUDE = -I ./includes
 
