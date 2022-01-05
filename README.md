@@ -1,6 +1,7 @@
 # Libftprintf
 ---
 ### Library that contains ft_printf, function that mimic the real printf.
+<hr>
 
  > [ft_printf](/src/printf.c) `(int	ft_printf(const char *format, ...))`
 
