@@ -37,7 +37,7 @@ int main() {
     ft_printf("Unsigned: %u\n", 789u);
     ft_printf("Hexadecimal: %x\n", 0x1A3F);
     ft_printf("Percent Sign: %%\n");
-    ft_printf 0;
+    return 0;
 }
 
 ```
